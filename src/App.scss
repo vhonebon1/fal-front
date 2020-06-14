@@ -15,10 +15,30 @@
   font-style: italic;
 }
 
+.students__name {
+  margin-bottom: 3px;
+}
+
+.students__image {
+  display: block;
+}
+
+.students__image, .students__info {
+  width: 70%;
+  margin: auto;
+}
+
 .students__info {
   margin-top: 1em;
 }
 
-.students__name {
-  margin-bottom: 5px;
+.students__inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.students__artworks-info {
+  font-size: 0.9em;
 }

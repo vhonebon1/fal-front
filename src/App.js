@@ -38,12 +38,14 @@ class App extends React.Component {
       <div className="students__grid">
         { this.state.students.map(student =>
           <div className="students__block">
-            <div className="student__image-wrapper">
-              <img className="students__image" src={student.main_image.image_file_name} />
+            <div className="students__inner">
+              <div className="students__image-wrapper">
+                <img className="students__image" src={student.main_image.image_file_name} />
+              </div>
             </div>
             <div className="students__info">
               <div className="students__name">{student.name.toUpperCase()}</div>
-              <div>
+              <div className="students__artworks-info">
                 <span className="students__artworks-title">{student.main_image.title}</span>
                 <span>, {student.main_image.date}</span>
               </div>
