@@ -5,10 +5,15 @@
 .students__grid {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap
 }
 
 .students__block {
   flex: 0 0 21%;
+  margin-bottom: 140px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .students__artworks-title {

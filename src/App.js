@@ -1,6 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import './App.scss'
+import { Route, Switch } from 'react-router-dom'
+import StudentGrid from './components/StudentGrid.jsx'
+import StudentPage from './components/StudentPage.jsx'
+import AboutPage from './components/AboutPage.jsx'
 
 class App extends React.Component {
 
@@ -8,11 +12,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       students: [],
-      selectedStudent: null
+      cohort: null,
+      hasData: false
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     require('dotenv').config()
     this.getData()
   }
@@ -20,47 +25,21 @@ class App extends React.Component {
   getData = () => {
     axios.get(process.env.REACT_APP_BACK).then((response) => {
       const { students, cohort } = response.data
-      this.setState({students, cohort})
+      this.setState({students, cohort, hasData: true})
     })
-  }
-
-  filterByStudent = (id) => {
-    const selected = this.state.students.filter((student) => student.id == id)
-    this.setState({selectedStudent: selected})
-  }
-
-  clearSelectedStudent = () => {
-    this.setState({selectedStudent: null})
-  }
-
-  renderGrid() {
-    return(
-      <div className="students__grid">
-        { this.state.students.map(student =>
-          <div className="students__block">
-            <div className="students__inner">
-              <div className="students__image-wrapper">
-                <img className="students__image" src={student.main_image.image_file_name} />
-              </div>
-            </div>
-            <div className="students__info">
-              <div className="students__name">{student.name.toUpperCase()}</div>
-              <div className="students__artworks-info">
-                <span className="students__artworks-title">{student.main_image.title}</span>
-                <span>, {student.main_image.date}</span>
-              </div>
-            </div>
-          </div>)
-        }
-      </div>
-    )
   }
 
   render() {
     return (
       <div className="App">
         <h1>Falmouth show</h1>
-        { this.state.students.length > 0 && this.renderGrid() }
+        { this.state.hasData &&
+          <Switch>
+            <Route exact path="/" render={props => (<StudentGrid {...props} students={this.state.students} />)} />
+            <Route exact path="/student/:studentName" render={props => (<StudentPage {...props} students={this.state.students} />)} />
+            <Route exact path="/about" render={props => (<AboutPage {...props} info={this.state.cohort.info} />)} />
+          </Switch>
+        }
       </div>
     )
   }
