@@ -1,0 +1,24 @@
+.App {
+  margin: 30px;
+}
+
+.students__grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.students__block {
+  flex: 0 0 21%;
+}
+
+.students__artworks-title {
+  font-style: italic;
+}
+
+.students__info {
+  margin-top: 1em;
+}
+
+.students__name {
+  margin-bottom: 5px;
+}
