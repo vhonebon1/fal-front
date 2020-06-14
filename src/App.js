@@ -57,7 +57,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Falmouth photography show</h1>
+        <h1>Falmouth show</h1>
         { this.state.students.length > 0 && this.renderGrid() }
       </div>
     )
