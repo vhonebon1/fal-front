@@ -117,27 +117,4 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  img {
-    -webkit-animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    -ms-animation: fadein 2s;
-    -o-animation: fadein 2s;
-    animation: fadein 2s;
-
-    -webkit-animation: fadeout 2s;
-    -moz-animation: fadeout 2s;
-    -ms-animation: fadeout 2s;
-    -o-animation: fadeout 2s;
-    animation: fadeout 2s;
-  }
-}
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes fadeout {
-  from { opacity: 1; }
-  to   { opacity: 0; }
 }
