@@ -37,7 +37,7 @@ class App extends React.Component {
         <div className="header__title">
           <Link to='/'>Falmouth photography display</Link>
         </div>
-        <div class="flex">
+        <div className="flex">
           <Link to='/about'>About</Link>
           <a href="">Past cohorts</a>
         </div>
@@ -60,16 +60,28 @@ class App extends React.Component {
   }
 
   render() {
+    const { students, cohort } = this.state
     return (
       <div className="App">
         { this.state.hasData &&
           <>
           { this.renderHeader() }
           <Switch>
-            <Route exact path="/" render={props => (<StudentGrid {...props} students={this.state.students} />)} />
-            <Route exact path="/student/:studentName" render={props => (<StudentPage {...props} students={this.state.students} />)} />
-            <Route exact path="/about" render={props => (<AboutPage {...props} info={this.state.cohort.info} />)} />
-            <Route exact path="/students" render={props => (<StudentIndex {...props} students={this.state.students} />)} />
+            <Route exact path="/" render={props => 
+              (<StudentGrid {...props} students={students} cohortName={cohort.name} />)
+            } />
+            <Route 
+              exact path={`/${cohort.name}/:studentName`} 
+              render={props => (<StudentPage {...props} students={students} />)} 
+            />
+            <Route 
+              exact path="/about" 
+              render={props => (<AboutPage {...props} info={cohort.info} />)} 
+            />
+            <Route 
+              exact path="/students" 
+              render={props => (<StudentIndex {...props} students={students} />)} 
+            />
           </Switch>
           </>
         }

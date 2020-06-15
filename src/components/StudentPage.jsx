@@ -20,14 +20,11 @@ class StudentPage extends React.Component {
   render() {
     const { student, hasData } = this.state
     return (
-      <div>
+      <>
         { hasData && 
-          <div>
-            <h2>{student.name}</h2>
-            <Slideshow items={student.artworks} /> 
-          </div>
+          <><Slideshow items={student.artworks} name={student.name} /></>
         }
-      </div>
+      </>
     )
   }
 }

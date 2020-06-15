@@ -85,3 +85,59 @@
 .flex {
   display: flex;
 }
+
+.slideshow__wrapper {
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+}
+
+.student-page__info {
+  position: fixed;
+  bottom: 60px;
+  left: 30px;
+}
+
+.nav__arrow {
+  position: fixed;
+  margin-top: 25vh;
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.slideshow__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  img {
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -ms-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s;
+
+    -webkit-animation: fadeout 2s;
+    -moz-animation: fadeout 2s;
+    -ms-animation: fadeout 2s;
+    -o-animation: fadeout 2s;
+    animation: fadeout 2s;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
