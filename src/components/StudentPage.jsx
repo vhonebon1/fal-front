@@ -1,4 +1,5 @@
 import React from 'react'
+import Slideshow from './Slideshow.jsx'
 
 class StudentPage extends React.Component {
 
@@ -17,13 +18,17 @@ class StudentPage extends React.Component {
   }
 
   render() {
+    const { student, hasData } = this.state
     return (
-      <>
-        { this.state.hasData &&
-          <p>{this.state.student.name}</p>
+      <div>
+        { hasData && 
+          <div>
+            <h2>{student.name}</h2>
+            <Slideshow items={student.artworks} /> 
+          </div>
         }
-      </>
-    );
+      </div>
+    )
   }
 }
 
