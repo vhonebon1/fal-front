@@ -22,7 +22,7 @@ class StudentPage extends React.Component {
     return (
       <>
         { hasData && 
-          <><Slideshow items={student.artworks} name={student.name} /></>
+          <><Slideshow items={student.artworks} name={student.name} statement={student.statement} /></>
         }
       </>
     )

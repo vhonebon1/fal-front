@@ -60,6 +60,7 @@ class Slideshow extends React.Component {
 
   render() {
     const { items, visibleItem } = this.state
+    const { name, statement } = this.props
     return(
       <>
         { items.length > 0 &&
@@ -69,11 +70,12 @@ class Slideshow extends React.Component {
               { items.length > 1 && this.renderNavArrows() }
             </div>          
             <div className="student-page__info">
-              <div className="students__name">{this.props.name}</div>
+              <div className="students__name">{name}</div>
               <div className="students__artworks-info">
                 <span className="students__artworks-title">{items[visibleItem].title}</span>
                 <span>, {items[visibleItem].date}</span>
               </div>
+              <div className="students__artworks-statement">{statement}</div>
             </div>
           </>
         }

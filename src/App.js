@@ -76,7 +76,7 @@ class App extends React.Component {
             />
             <Route 
               exact path="/about" 
-              render={props => (<AboutPage {...props} info={cohort.info} />)} 
+              render={props => (<AboutPage {...props} cohort={cohort} />)} 
             />
             <Route 
               exact path="/students" 
