@@ -15,7 +15,9 @@ class App extends React.Component {
     this.state = {
       students: [],
       cohort: null,
-      hasData: false
+      pastCohorts: [],
+      hasData: false,
+      showDropdown: false
     }
   }
 
@@ -25,38 +27,44 @@ class App extends React.Component {
   }
 
   getData = () => {
-    axios.get(process.env.REACT_APP_BACK).then((response) => {
-      const { students, cohort } = response.data
-      this.setState({students, cohort, hasData: true})
+    axios.get(`${process.env.REACT_APP_BACK}/api`).then((response) => {
+      const { students, cohort, past_cohorts } = response.data
+      this.setState({students, cohort, pastCohorts: past_cohorts, hasData: true})
     })
+  }
+
+  toggleShowDropdown = () => {
+    this.setState({ showDropdown: true})
+  }
+
+  toggleHideDropdown = () => {
+    this.setState({ showDropdown: false})
   }
 
   renderHeader() {
+    const { pastCohorts, showDropdown} = this.state
+    const showPastCohorts = pastCohorts.length > 0 && showDropdown
     return (
       <div className="header__links">
         <div className="header__title">
-          <Link to='/'>Falmouth photography display</Link>
+          <Link to='/'>Falmouth fashion photography</Link>
         </div>
         <div className="flex">
-          <Link to='/about'>About</Link>
-          <a href="">Past cohorts</a>
+          <Link className="header-link" to='/about'>About</Link>
+          { pastCohorts.length > 0 &&
+            <div className="header-link" onMouseEnter={() => this.toggleShowDropdown()} onMouseLeave={() => this.toggleHideDropdown()}>
+              Past cohorts
+              { showPastCohorts && 
+                <div className="cohort-links">
+                  { this.state.pastCohorts.map(cohort => 
+                    <Link to='/about' class="cohort-link">{cohort}</Link>
+                  )}
+                </div>
+              }
+            </div>
+          }
         </div>
       </div>)
-  }
-
-  alphabet() {
-    const thing = {}
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-    alphabet.forEach(letter => thing[letter] = [])
-    return thing
-  }
-
-  studentsByName = () => {
-    const groups = this.alphabet()
-    this.state.students.forEach(student => {
-      groups[student.name[0].toLowerCase()].push(student)
-    })
-    return groups
   }
 
   render() {

@@ -143,3 +143,17 @@
   margin-bottom: 20px;
   font-style: italic;
 }
+
+.cohort-links {
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  display: flex;
+}
+
+.header-link {
+  margin-left: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+}

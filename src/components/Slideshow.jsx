@@ -73,7 +73,7 @@ class Slideshow extends React.Component {
               <div className="students__name">{name}</div>
               <div className="students__artworks-info">
                 <span className="students__artworks-title">{items[visibleItem].title}</span>
-                <span>, {items[visibleItem].date}</span>
+                <span>{items[visibleItem].date ? `, ${items[visibleItem].date}` : ''}</span>
               </div>
               <div className="students__artworks-statement">{statement}</div>
             </div>
