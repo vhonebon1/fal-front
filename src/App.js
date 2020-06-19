@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   getData = () => {
-    axios.get(`${process.env.REACT_APP_BACK}/api`).then((response) => {
+    axios.get(process.env.REACT_APP_BACK).then((response) => {
       const { students, cohort, past_cohorts } = response.data
       this.setState({students, cohort, pastCohorts: past_cohorts, hasData: true})
     })
