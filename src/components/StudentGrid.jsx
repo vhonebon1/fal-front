@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
+import { CSSTransitionGroup } from 'react-transition-group'
+
 
 const StudentGrid = ({ students, cohortName }) =>
   <div className="students__grid">
@@ -10,7 +13,16 @@ const StudentGrid = ({ students, cohortName }) =>
             <div className="students__block" >
               <div className="students__inner">
                 <div className="students__image-wrapper">
-                  <img className="students__image" src={student.artworks[0].image_file_name} alt="" />
+                  <LazyLoad throttle={200} offset={100}>
+                    <CSSTransitionGroup key="1"
+                      transitionName="fade"
+                      transitionAppear
+                      transitionAppearTimeout={500}
+                      transitionEnter={false}
+                      transitionLeave={false}>
+                      <img className="students__image" src={student.artworks[0].image_file_name} alt="" />
+                    </CSSTransitionGroup>
+                  </LazyLoad>
                 </div>
               </div>
               <div className="students__info">

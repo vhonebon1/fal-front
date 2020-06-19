@@ -14,7 +14,7 @@
   margin: 0.5em;
   margin-top: 0;
   @include bp-tablet {
-    margin: 4em;
+    margin: 2em;
   }
   a {
     flex: 0 0 100%;
@@ -37,6 +37,10 @@
   }
   &:hover {
     cursor: pointer;
+    .students__name, span {
+      text-decoration: underline;
+      text-decoration-color:#abb4c9;
+    }
   }
 }
 
@@ -64,12 +68,6 @@
   .students__name {
     text-decoration: none;
     color: black;
-  }
-  &:hover {
-    .students__name, span {
-      text-decoration: underline;
-      text-decoration-color:#abb4c9;
-    }
   }
 }
 
