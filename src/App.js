@@ -17,7 +17,8 @@ class App extends React.Component {
       cohort: null,
       pastCohorts: [],
       hasData: false,
-      showDropdown: false
+      showDropdown: false,
+      lastScrollPosition: null
     }
   }
 
@@ -39,6 +40,10 @@ class App extends React.Component {
 
   toggleHideDropdown = () => {
     this.setState({ showDropdown: false})
+  }
+
+  saveScrollPosition = (e) => {
+    this.setState({ lastScrollPosition: e.target.offsetTop })
   }
 
   renderHeader() {
@@ -68,7 +73,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { students, cohort } = this.state
+    const { students, cohort, lastScrollPosition } = this.state
     return (
       <div className="App">
         { this.state.hasData &&
@@ -76,7 +81,12 @@ class App extends React.Component {
           { this.renderHeader() }
           <Switch>
             <Route exact path="/" render={props => 
-              (<StudentGrid {...props} students={students} cohortName={cohort.name} />)
+              (<StudentGrid {...props} 
+                students={students} 
+                cohortName={cohort.name}
+                saveScrollPosition={this.saveScrollPosition}
+                lastScrollPosition={lastScrollPosition}
+              />)
             } />
             <Route 
               exact path={`/${cohort.name}/:studentName`} 
