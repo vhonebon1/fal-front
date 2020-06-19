@@ -42,7 +42,7 @@ class App extends React.Component {
   }
 
   renderHeader() {
-    const { pastCohorts, showDropdown} = this.state
+    const { pastCohorts, showDropdown } = this.state
     const showPastCohorts = pastCohorts.length > 0 && showDropdown
     return (
       <div className="header__links">

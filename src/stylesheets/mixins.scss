@@ -1,0 +1,28 @@
+$break-small: 376px;
+$break-tablet: 768px;
+$break-desktop: 992px;
+$break-giant: 1170px;
+
+@mixin bp-small {
+  @media only screen and (min-width: 0px) {
+    @content;
+  }
+}
+
+@mixin bp-tablet {
+  @media only screen and (min-width: $break-tablet) {
+    @content;
+  }
+}
+
+@mixin bp-desktop{
+  @media only screen and (min-width: $break-desktop) {
+    @content;
+  }
+}
+
+@mixin bp-giant {
+  @media only screen and (min-width: $break-giant) {
+    @content;
+  }
+}

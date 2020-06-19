@@ -1,17 +1,28 @@
+@import './stylesheets/mixins';
+
 .App {
-  margin: 30px;
+  margin: 30px 15px;
+  @include bp-tablet {
+    margin: 30px;
+  }
 }
 
 .students__grid {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 4em;
+  margin: 0.5em;
   margin-top: 0;
+  @include bp-tablet {
+    margin: 4em;
+  }
   a {
-    flex: 0 0 21%;
+    flex: 0 0 100%;
     text-decoration: none;
     color: black;
+    @include bp-tablet {
+      flex: 0 0 21%;
+    }
   }
 }
 
@@ -20,7 +31,10 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 350px;
-  margin-top: 60px;
+  margin-top: 20px;
+  @include bp-tablet {
+    margin-top: 60px;
+  }
   &:hover {
     cursor: pointer;
   }
@@ -39,8 +53,11 @@
 }
 
 .students__image {
-  width: 80%;
+  width: 90%;
   margin: auto;
+  @include bp-tablet {
+    width: 80%;
+  }
 }
 
 .students__info {
@@ -49,7 +66,10 @@
     color: black;
   }
   &:hover {
-    text-decoration: underline;
+    .students__name, span {
+      text-decoration: underline;
+      text-decoration-color:#abb4c9;
+    }
   }
 }
 
@@ -74,6 +94,12 @@
     color: black;
     text-decoration: none;
   }
+  .header-link {
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color:#abb4c9;
+    }
+  }
   .header__title {
     margin: 0;
     font-size: 2em;
@@ -97,7 +123,11 @@
 .student-page__info {
   position: fixed;
   bottom: 30px;
-  left: 30px;
+  left: 15px;
+  @include bp-tablet {
+    bottom: 30px;
+    left: 30px;  
+  }
 }
 
 .nav__arrow {
@@ -128,11 +158,14 @@
 }
 
 .cohort__info-block {
-  width: 65%;
-  font-size: 1.25em;
-  line-height: 1.4em;
-  margin-top: 60px;
   font-weight: 300;
+  margin-top: 20px; 
+  @include bp-tablet { 
+    width: 65%;
+    font-size: 1.25em;
+    line-height: 1.4em;
+    margin-top: 60px; 
+  }
   .italic {
     font-style: italic;
   }
