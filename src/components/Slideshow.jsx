@@ -18,14 +18,14 @@ class Slideshow extends React.Component {
 
   nextItem = () => {
     const { items, visibleItem } = this.state
-    const lastItem = (items.length) - 1 == visibleItem
+    const lastItem = (items.length) - 1 === visibleItem
     const newIndex = lastItem ? 0 : visibleItem + 1
     this.setState({ visibleItem: newIndex })
   }
 
   previousItem = () => {
     const { items, visibleItem } = this.state
-    const firstItem = visibleItem == 0
+    const firstItem = visibleItem === 0
     const newIndex = firstItem ? items.length - 1 : visibleItem - 1
     this.setState({ visibleItem: newIndex })
   }
@@ -34,7 +34,7 @@ class Slideshow extends React.Component {
     const item = this.state.items[this.state.visibleItem]
     return(
       <div className="slideshow__inner">
-        { item.isVideo ? this.renderVideoPlayer(item.video_url) : <img src={item.image_file_name} /> }
+        { item.isVideo ? this.renderVideoPlayer(item.video_url) : <img src={item.image_file_name} alt="" /> }
       </div>
     )
   }

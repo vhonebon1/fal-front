@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-
+import HttpsRedirect from 'react-https-redirect';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <HttpsRedirect>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </HttpsRedirect>,
   document.getElementById('root')
 );
 

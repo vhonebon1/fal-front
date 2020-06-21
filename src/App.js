@@ -6,7 +6,6 @@ import StudentGrid from './components/StudentGrid.jsx'
 import StudentPage from './components/StudentPage.jsx'
 import StudentIndex from './components/StudentIndex.jsx'
 import AboutPage from './components/AboutPage.jsx'
-import Header from './components/Header.jsx'
 
 class App extends React.Component {
 

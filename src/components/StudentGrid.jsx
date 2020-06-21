@@ -6,14 +6,14 @@ import { CSSTransitionGroup } from 'react-transition-group'
 
 class StudentGrid extends React.Component {
 
-  componentDidMount = () => window.scrollTo(0, this.props.lastScrollPosition)
+  componentDidMount = () => window.scrollTo(0, (this.props.lastScrollPosition - 80))
 
   render() {
-    const { students, cohortName, lastScrollPosition, saveScrollPosition } = this.props
+    const { students, cohortName, saveScrollPosition } = this.props
     return (
       <div className="students__grid">
         { students.map((student, index) =>
-          <React.Fragment>
+          <React.Fragment key={index}>
             { student.artworks.length > 0 &&
               <Link 
                 to={`/${cohortName}/${student.name.replace(/\s+/g, '-').toLowerCase()}`} 
