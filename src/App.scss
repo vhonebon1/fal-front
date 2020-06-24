@@ -188,3 +188,24 @@
     cursor: pointer;
   }
 }
+
+.student__nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  display: flex;
+  .nav__left { 
+    flex: 0 0 50% ;  
+    &:hover {
+      cursor: w-resize;
+    }
+  }
+  .nav__right {
+    flex: 0 0 50%;  
+    &:hover {
+      cursor: e-resize;
+    }
+  }
+}

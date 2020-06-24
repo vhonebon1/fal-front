@@ -54,6 +54,7 @@ class App extends React.Component {
           <Link to='/'>Falmouth fashion photography</Link>
         </div>
         <div className="flex">
+          <Link className="header-link" to='/'>Home</Link>
           <Link className="header-link" to='/about'>About</Link>
           { pastCohorts.length > 0 &&
             <div className="header-link" onMouseEnter={() => this.toggleShowDropdown()} onMouseLeave={() => this.toggleHideDropdown()}>
