@@ -20,6 +20,10 @@
     flex: 0 0 100%;
     text-decoration: none;
     color: black;
+    margin-top: 20px;
+    @include bp-tablet {
+      margin-top: 60px;
+    }
     @include bp-tablet {
       flex: 0 0 48%;
     }
@@ -34,10 +38,6 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 350px;
-  margin-top: 20px;
-  @include bp-tablet {
-    margin-top: 60px;
-  }
   &:hover {
     cursor: pointer;
     .students__name, span {
@@ -57,14 +57,11 @@
 
 .students__image {
   display: block;
-}
-
-.students__image {
-  width: 90%;
-  margin: auto;
-  @include bp-tablet {
-    width: 80%;
-  }
+  width: auto;
+  max-height: 250px;
+  max-width: 250px;
+  height: auto;
+  margin: 20px 0;
 }
 
 .students__info {
