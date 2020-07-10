@@ -104,7 +104,8 @@
   }
   .header__title {
     margin: 0;
-    font-size: 2em;
+    font-size: 1.8em;
+    letter-spacing: 1.5px;
     a {
       margin: 0;
     }
@@ -150,17 +151,30 @@
   }
 }
 
-.slideshow__inner {
+.image__inner {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   img {
     display: block;
-    max-width:70vw;
-    max-height:70vh;
+    max-width: 70vw;
+    max-height: 70vh;
     width: auto;
     height: auto;
   }
+}
+
+.slideshow__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-width: 55vw;
+  min-height: 45vh;
+  max-width: 55vw;
+  max-height: 45vh;
+  width: auto;
+  height: auto;
+  margin: auto;
 }
 
 .students__artworks-statement {

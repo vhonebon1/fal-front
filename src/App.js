@@ -51,7 +51,7 @@ class App extends React.Component {
     return (
       <div className="header__links">
         <div className="header__title">
-          <Link to='/'>Falmouth fashion photography</Link>
+          <Link to='/'>FALMOUTH FASHION PHOTOGRAPHY</Link>
         </div>
         <div className="flex">
           <Link className="header-link" to='/'>Home</Link>
