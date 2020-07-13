@@ -59,9 +59,8 @@ class StudentPage extends React.Component {
   renderGrid = () => {
     const { student } = this.state
     const showInfo = student.email || student.instagram
-    console.log(showInfo)
     return(
-      <div clasName="student__info">
+      <div className="student__info">
         <div className="students__name">{student.name}</div>
         <div className="students__artworks-statement">{student.statement}</div>
         { showInfo &&
