@@ -47,24 +47,36 @@ class StudentPage extends React.Component {
     const { student, visibleItem } = this.state
     return(
       <>
-        <Slideshow item={student.artworks[visibleItem]} name={student.name} statement={student.statement} />
+        <Slideshow 
+          item={student.artworks[visibleItem]} 
+          student={student} 
+        />
         { student.artworks.length > 1 && this.renderNav() }
       </>
     )
   }
 
   renderGrid = () => {
-    const { artworks } = this.state.student
+    const { student } = this.state
+    const showInfo = student.email || student.instagram
+    console.log(showInfo)
     return(
-      <div>
-        { artworks.map((artwork, index) =>
+      <div clasName="student__info">
+        <div className="students__name">{student.name}</div>
+        <div className="students__artworks-statement">{student.statement}</div>
+        { showInfo &&
+          <div className="students__contact"> 
+            { student.instagram &&
+              <span>Instagram:<a target="_blank" href={student.instagram}>{student.instagram}</a></span>
+            }
+            { student.email &&
+              <span>Email: {student.email}</span>
+            }
+          </div>
+        }
+        { student.artworks.map((artwork, index) =>
           <>
-            <img className="students__image margin-top-40" src={artwork.image_file_name} alt="" />
-            <div className="students__name margin-top-20">{this.state.student.name}</div>
-            <div>
-              <span className="students__artworks-title">{artwork.title}</span>
-              <span>{artwork.date ? `, ${artwork.date}` : ''}</span>
-            </div>
+            <img className="students__image margin-bottom-20" src={artwork.image_file_name} alt="" />
           </>
         )}
       </div>
