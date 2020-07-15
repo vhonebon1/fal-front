@@ -46,14 +46,14 @@ class App extends React.Component {
   }
 
   renderHeader() {
-    const { pastCohorts, showDropdown } = this.state
+    const { pastCohorts, showDropdown, cohort } = this.state
     const showPastCohorts = pastCohorts.length > 0 && showDropdown
     return (
       <div className="header__links">
         <div className="header__title">
-          <Link to='/'>FALMOUTH FASHION PHOTOGRAPHY</Link>
+          <Link to='/'>FALMOUTH FASHION PHOTOGRAPHY {cohort.name}</Link>
         </div>
-        <div className="flex">
+        <div className="header__links-wrapper">
           <Link className="header-link" to='/'>Home</Link>
           <Link className="header-link" to='/about'>About</Link>
           { pastCohorts.length > 0 &&

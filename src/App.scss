@@ -1,6 +1,7 @@
 @import './stylesheets/mixins';
 
 .App {
+  height: calc(100vh - 60px);
   margin: 30px 15px;
   @include bp-tablet {
     margin: 30px;
@@ -14,9 +15,12 @@
   margin: 0.5em;
   margin-top: 0;
   @include bp-tablet {
-    margin: 2em;
+    margin: 2em 0;
   }
   a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 0 0 100%;
     text-decoration: none;
     color: black;
@@ -28,26 +32,15 @@
       flex: 0 0 48%;
     }
     @include bp-desktop {
-      flex: 0 0 21%;
+      flex: 0 0 19%;
     }
-  }
-}
-
-.students__block {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 20px;
-  &:hover {
-    cursor: pointer;
-    .students__name, span {
-      text-decoration: underline;
-      text-decoration-color:#abb4c9;
+    &:hover {
+      cursor: pointer;
+      .students__name, span {
+        text-decoration: underline;
+        text-decoration-color:#abb4c9;
+      }
     }
-  }
-  @include bp-tablet {
-    min-height: 350px;
-    margin-top: 0;
   }
 }
 
@@ -56,7 +49,6 @@
 }
 
 .students__name {
-  margin: 25px 0 3px 0;
   @include bp-tablet {
     margin-top: 0;
   }
@@ -69,25 +61,22 @@
   width: auto;
   margin: 0 auto;
   @include bp-tablet {
-    margin: 20px 0;
+    margin: auto;
     max-width: 250px;
     max-height: 250px;
   }
 }
 
 .students__info {
+  margin-top: 20px;
   .students__name {
     text-decoration: none;
     color: black;
   }
 }
 
-.students__inner {
-  display: flex;
-  flex: 1;
-  .students__image-wrapper {
-    margin: auto;
-  }
+.students__image-wrapper {
+  margin: auto;
 }
 
 .students__artworks-info {
@@ -98,6 +87,15 @@
   display: flex;
   justify-content: space-between;
   font-weight: 300;
+  .header__links-wrapper {
+    position: absolute;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    @include bp-tablet {
+      flex-direction: row;
+    }
+  }
   a {
     margin-left: 25px;
     color: black;
@@ -117,6 +115,10 @@
     margin: 0;
     font-size: 1.8em;
     letter-spacing: 1.5px;
+    margin-right: 60px;
+    @include bp-tablet {
+      margin-right: 0;
+    }
     a {
       margin: 0;
     }
@@ -132,23 +134,21 @@
 }
 
 .slideshow__wrapper {
-  height: 50vh;
+  flex: 0 0 50%;
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
 }
 
 .student-page__info {
-  position: fixed;
-  bottom: 30px;
-  left: 15px;
-  @include bp-tablet {
-    bottom: 30px;
-    left: 30px;  
-  }
-  .students__name {
-    font-size: 1.1em;
-  }
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.students__page-name {
+  font-size: 1.35em;
 }
 
 .students__contact {
@@ -196,7 +196,7 @@
   img {
     display: block;
     max-width: 50vw;
-    max-height: 50vh;
+    max-height: 55vh;
     width: auto;
     height: auto;
   }
@@ -212,17 +212,18 @@
   max-height: 40vh;
   width: auto;
   height: auto;
-  margin: auto;
+  margin: auto
 }
 
 .students__artworks-statement {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  font-size: 0.9em;
   margin: 10px 0 15px 0;
   font-weight: 300;
   line-height: 1.3em;
   @include bp-tablet {
-    width: 85%; 
+    width: 90%; 
   }
 }
 
@@ -234,10 +235,13 @@
     width: 65%;
     font-size: 1.25em;
     line-height: 1.4em;
-    margin-top: 60px; 
+    margin-top: 80px; 
   }
   .italic {
     font-style: italic;
+  }
+  a {
+    color: black;
   }
 }
 
@@ -290,5 +294,16 @@
 .student__info {
   .students__name {
     font-size: 1.1em;
+  }
+}
+
+.student__page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 40px;
+  @include bp-tablet {
+    margin-top: 0; 
   }
 }

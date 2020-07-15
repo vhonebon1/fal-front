@@ -16,6 +16,11 @@ class StudentPage extends React.Component {
     const paramsName = this.props.match.params.studentName
     const student = this.props.students.find(student => student.name.replace(/\s+/g, '-').toLowerCase() === paramsName)
     this.setState({student, hasData: true})
+    document.querySelector('.header__title').style.display = 'none'
+  }
+
+  componentWillUnmount() {
+    document.querySelector('.header__title').style.display = 'block'
   }
 
   nextItem = () => {
@@ -49,7 +54,7 @@ class StudentPage extends React.Component {
       <>
         <Slideshow 
           item={student.artworks[visibleItem]} 
-          student={student} 
+          student={student}
         />
         { student.artworks.length > 1 && this.renderNav() }
       </>
@@ -61,7 +66,7 @@ class StudentPage extends React.Component {
     const showInfo = student.email || student.instagram
     return(
       <div className="student__info">
-        <div className="students__name">{student.name}</div>
+        <div className="students__page-name">{student.name}</div>
         <div className="students__artworks-statement">{student.statement}</div>
         { showInfo &&
           <div className="students__contact"> 
@@ -69,7 +74,7 @@ class StudentPage extends React.Component {
               <span>Instagram: <a target="_blank" href={student.instagram}>{student.instagram}</a></span>
             }
             { student.email &&
-              <span>Email: {student.email}</span>
+              <span>Website: {student.email}</span>
             }
           </div>
         }
@@ -87,9 +92,9 @@ class StudentPage extends React.Component {
     return (
       <>
         { hasData && 
-          <>
+          <div className="student__page">
             { window.innerWidth > 768 ? this.renderSlideshow() : this.renderGrid() }
-          </>
+          </div>
         }
       </>
     )
