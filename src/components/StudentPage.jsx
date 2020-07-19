@@ -42,8 +42,8 @@ class StudentPage extends React.Component {
   renderNav () {
     return(
       <div className="student__nav">
-        <div className="nav__left" onClick={() => this.previousItem()}></div>
-        <div className="nav__right" onClick={() => this.nextItem()}></div>
+        <div className="nav__left" onClick={() => this.nextItem()}></div>
+        <div className="nav__right" onClick={() => this.previousItem()}></div>
       </div>
     )
   }

@@ -24,7 +24,7 @@
     flex: 0 0 100%;
     text-decoration: none;
     color: black;
-    margin-top: 20px;
+    margin-top: 40px;
     @include bp-tablet {
       margin-top: 60px;
     }
@@ -76,7 +76,21 @@
 }
 
 .students__image-wrapper {
+  height: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .students__image-innerWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  img {
+    flex: 1;
+    margin: auto;
+  }
 }
 
 .students__artworks-info {

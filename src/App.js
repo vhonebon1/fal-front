@@ -16,13 +16,11 @@ class App extends React.Component {
       cohort: null,
       pastCohorts: [],
       hasData: false,
-      showDropdown: false,
-      lastScrollPosition: null
+      showDropdown: false
     }
   }
 
   componentDidMount() {
-    require('dotenv').config()
     this.getData()
   }
 
@@ -39,10 +37,6 @@ class App extends React.Component {
 
   toggleHideDropdown = () => {
     this.setState({ showDropdown: false})
-  }
-
-  saveScrollPosition = (e) => {
-    this.setState({ lastScrollPosition: e.target.offsetTop })
   }
 
   renderHeader() {
@@ -84,8 +78,6 @@ class App extends React.Component {
               (<StudentGrid {...props} 
                 students={students} 
                 cohortName={cohort.name}
-                saveScrollPosition={this.saveScrollPosition}
-                lastScrollPosition={lastScrollPosition}
               />)
             } />
             <Route 
