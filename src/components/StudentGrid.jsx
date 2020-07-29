@@ -1,10 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
-import { CSSTransitionGroup } from 'react-transition-group'
+import FadeIn from "react-lazyload-fadein";
 
 
 class StudentGrid extends React.Component {
+ 
+  functionAsChildren = (image) => (
+    <div>
+      <FadeIn height={200} offset={250} >
+        {onload => (
+          <img
+            src={image}
+            onLoad={onload}
+            style={{ maxHeight: 200, maxWidth: 200 }}
+          />
+        )}
+      </FadeIn>
+    </div>
+  )
 
   render() {
     const { students, cohortName } = this.props
@@ -19,16 +32,7 @@ class StudentGrid extends React.Component {
               >
                 <div className="students__image-wrapper">
                   <div className="students__image-innerWrapper">
-                    <LazyLoad throttle={200} offset={100}>
-                      <CSSTransitionGroup key="1"
-                        transitionName="fade"
-                        transitionAppear
-                        transitionAppearTimeout={100}
-                        transitionEnter={false}
-                        transitionLeave={false}>
-                        <img className="students__image" src={student.artworks[0].image_file_name} alt="" />
-                      </CSSTransitionGroup>
-                    </LazyLoad>
+                    { this.functionAsChildren(student.artworks[0].image_file_name) }
                   </div>
                   <div className="students__info">
                     <div className="students__name">{student.name.toUpperCase()}</div>
