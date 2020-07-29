@@ -114,7 +114,6 @@
     position: absolute;
     right: 30px;
     display: flex;
-    flex-direction: column;
     @include bp-tablet {
       flex-direction: row;
     }
@@ -330,7 +329,11 @@
   }
 }
 .spinner {
+  display: none;
   position: fixed;
   top: 35vh;
   left: 50vw;
+  @include bp-tablet {
+    display: block; 
+  }
 }

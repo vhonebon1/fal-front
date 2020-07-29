@@ -1,5 +1,6 @@
 import React from 'react'
 import Slideshow from './Slideshow.jsx'
+import VideoPlayer from './VideoPlayer.jsx'
 
 class StudentPage extends React.Component {
 
@@ -80,7 +81,9 @@ class StudentPage extends React.Component {
         }
         { student.artworks.map((artwork, index) =>
           <>
-            <img className="students__image margin-bottom-20" src={artwork.image_file_name} alt="" />
+            { artwork.isVideo ? <VideoPlayer url={artwork.video_url} />
+                : <img className="students__image margin-bottom-20" src={artwork.image_file_name} alt="" />
+            }
           </>
         )}
       </div>
