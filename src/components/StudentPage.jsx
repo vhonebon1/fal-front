@@ -71,7 +71,7 @@ class StudentPage extends React.Component {
         { showInfo &&
           <div className="students__contact"> 
             { student.instagram &&
-              <span>Instagram: <a target="_blank" href={student.instagram}>{student.instagram}</a></span>
+              <span>Instagram: <a target="_blank" rel="noopener noreferrer" href={student.instagram}>{student.instagram}</a></span>
             }
             { student.email &&
               <span>Website: {student.email}</span>
@@ -88,10 +88,9 @@ class StudentPage extends React.Component {
   }
 
   render() {
-    const { student, hasData, visibleItem } = this.state
     return (
       <>
-        { hasData && 
+        { this.state.hasData && 
           <div className="student__page">
             { window.innerWidth > 768 ? this.renderSlideshow() : this.renderGrid() }
           </div>

@@ -4,7 +4,6 @@ import './App.scss'
 import { Route, Switch, Link } from 'react-router-dom'
 import StudentGrid from './components/StudentGrid.jsx'
 import StudentPage from './components/StudentPage.jsx'
-import StudentIndex from './components/StudentIndex.jsx'
 import AboutPage from './components/AboutPage.jsx'
 
 class App extends React.Component {
@@ -67,7 +66,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { students, cohort, lastScrollPosition } = this.state
+    const { students, cohort } = this.state
     return (
       <div className="App">
         { this.state.hasData &&
@@ -87,10 +86,6 @@ class App extends React.Component {
             <Route 
               exact path="/about" 
               render={props => (<AboutPage {...props} cohort={cohort} />)} 
-            />
-            <Route 
-              exact path="/students" 
-              render={props => (<StudentIndex {...props} students={students} />)} 
             />
           </Switch>
           </>

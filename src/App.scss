@@ -6,6 +6,10 @@
   @include bp-tablet {
     margin: 30px;
   }
+  @include bp-giant {
+    height: calc(100vh - 120px);
+    margin: 60px;
+  }
 }
 
 .students__grid {
@@ -62,8 +66,13 @@
   margin: 0 auto;
   @include bp-tablet {
     margin: auto;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 220px;
+    max-height: 220px;
+  }
+  @include bp-giant {
+    margin: auto;
+    max-width: 250px;
+    max-height: 250px;
   }
 }
 
@@ -319,4 +328,9 @@
   @include bp-tablet {
     margin-top: 0; 
   }
+}
+.spinner {
+  position: fixed;
+  top: 35vh;
+  left: 50vw;
 }

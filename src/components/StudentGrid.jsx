@@ -10,9 +10,10 @@ class StudentGrid extends React.Component {
       <FadeIn height={200} offset={250} >
         {onload => (
           <img
+            alt=""
             src={image}
             onLoad={onload}
-            style={{ maxHeight: 200, maxWidth: 200 }}
+            style={{ maxHeight: window.screen.width > 1500 ? 250 : 200, maxWidth: window.screen.width > 1170 ? 250 : 200 }}
           />
         )}
       </FadeIn>

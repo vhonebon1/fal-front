@@ -1,19 +1,12 @@
 import React from 'react'
-import Vimeo from '@u-wave/react-vimeo';
+import VideoPlayer from './VideoPlayer.jsx'
 
 const Slideshow = ({ item, student }) =>
   <>
     <div className="slideshow__wrapper">
         { item.isVideo ?  
           <div className="slideshow__inner">
-            <Vimeo
-              className="video"
-              video={item.video_url}
-              controls={false}
-              loop={true}
-              responsive={true}
-              autoplay
-            />
+            <VideoPlayer url={item.video_url} />
           </div>
           : 
           <div className="image__inner">
@@ -32,10 +25,10 @@ const Slideshow = ({ item, student }) =>
         { (student.email || student.instagram) &&
           <div className="students__contact">
             { student.instagram &&
-              <span>Instagram:<a target="_blank" href={`https://www.instagram.com/${student.instagram}`}>{`@${student.instagram}`}</a></span>
+              <span>Instagram:<a target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/${student.instagram}`}>{`@${student.instagram}`}</a></span>
             }
             { student.email &&
-              <span>Website:<a target="_blank" href={student.email}>{student.email}</a></span>
+              <span>Website:<a target="_blank" rel="noopener noreferrer" href={student.email}>{student.email}</a></span>
             }
           </div>
         }

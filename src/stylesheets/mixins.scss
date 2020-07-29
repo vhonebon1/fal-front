@@ -1,7 +1,7 @@
 $break-small: 376px;
 $break-tablet: 768px;
 $break-desktop: 992px;
-$break-giant: 1170px;
+$break-giant: 1500px;
 
 @mixin bp-small {
   @media only screen and (min-width: 0px) {
@@ -15,7 +15,7 @@ $break-giant: 1170px;
   }
 }
 
-@mixin bp-desktop{
+@mixin bp-desktop {
   @media only screen and (min-width: $break-desktop) {
     @content;
   }
