@@ -5,15 +5,15 @@ import FadeIn from "react-lazyload-fadein";
 
 class StudentGrid extends React.Component {
  
-  functionAsChildren = (image) => (
+  functionAsChildren = (image, size) => (
     <div>
-      <FadeIn height={200} offset={250} >
+      <FadeIn height={size} offset={250} >
         {onload => (
           <img
             alt=""
             src={image}
             onLoad={onload}
-            style={{ maxHeight: window.screen.width > 1500 ? 250 : 200, maxWidth: window.screen.width > 1170 ? 250 : 200 }}
+            style={{ maxHeight: size, maxWidth: size }}
           />
         )}
       </FadeIn>
@@ -22,6 +22,9 @@ class StudentGrid extends React.Component {
 
   render() {
     const { students, cohortName } = this.props
+    const isMobile = window.screen.width < 768
+    const isLarge = window.screen.width > 1500
+    const size = isMobile ? "100%" : isLarge ? 250 : 200
     return (
       <div className="students__grid">
         { students.map((student, index) =>
@@ -35,7 +38,7 @@ class StudentGrid extends React.Component {
                   <div className="students__image-innerWrapper">
                     { window.screen < 768 ? 
                       <img alt="" src={student.artworks[0].image_file_name} />
-                      : this.functionAsChildren(student.artworks[0].image_file_name) }
+                      : this.functionAsChildren(student.artworks[0].image_file_name, size) }
                   </div>
                   <div className="students__info">
                     <div className="students__name">{student.name.toUpperCase()}</div>
