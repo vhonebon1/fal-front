@@ -29,11 +29,12 @@
     text-decoration: none;
     color: black;
     margin-top: 40px;
-    @include bp-tablet {
-      margin: 60px 0 30px 0;
+    @include bp-small-tablet {
+      flex: 0 0 48%;
     }
     @include bp-tablet {
-      flex: 0 0 48%;
+      margin: 60px 0 30px 0;
+      flex: 0 0 33%;
     }
     @include bp-desktop {
       flex: 0 0 19%;
@@ -142,6 +143,10 @@
     margin: 0;
     font-size: 1.8em;
     letter-spacing: 1.5px;
+    max-width: 250px;
+    @include bp-tablet {
+      max-width: 100%;
+    }
     a {
       margin: 0;
     }

@@ -4,16 +4,45 @@ import FadeIn from "react-lazyload-fadein";
 
 
 class StudentGrid extends React.Component {
- 
-  functionAsChildren = (image, size) => (
+
+   constructor(props) {
+    super(props);
+    const startSize = this.calculateSize()
+    this.state = {
+      size: startSize
+    }
+  }
+
+  componentWillMount = () => {
+    this.setState({ size: this.calculateSize() })
+    const self = this;
+    window.addEventListener('resize', function(event){
+      self.setState({ size: self.calculateSize() })
+    })
+  }
+
+  componentWillUnmount = () => {
+    const self = this;
+    window.removeEventListener('resize', function(event){
+      self.setState({ size: self.calculateSize() })
+    })
+  }
+
+  calculateSize = () => {
+    const isMobile = window.innerWidth < 500
+    const isLarge = window.innerWidth > 1500
+    return isMobile ? (window.innerWidth - 30) : isLarge ? 250 : 200
+  }
+
+  functionAsChildren = (image) => (
     <div>
-      <FadeIn height={size} offset={250} >
+      <FadeIn height={this.state.size} offset={250} >
         {onload => (
           <img
             alt=""
             src={image}
             onLoad={onload}
-            style={{ maxHeight: size, maxWidth: size }}
+            style={{ maxHeight: this.state.size, maxWidth: this.state.size }}
           />
         )}
       </FadeIn>
@@ -22,9 +51,6 @@ class StudentGrid extends React.Component {
 
   render() {
     const { students, cohortName } = this.props
-    const isMobile = window.screen.width < 768
-    const isLarge = window.screen.width > 1500
-    const size = isMobile ? "100%" : isLarge ? 250 : 200
     return (
       <div className="students__grid">
         { students.map((student, index) =>
@@ -36,9 +62,9 @@ class StudentGrid extends React.Component {
               >
                 <div className="students__image-wrapper">
                   <div className="students__image-innerWrapper">
-                    { window.screen < 768 ? 
+                    { window.screen < 500 ? 
                       <img alt="" src={student.artworks[0].image_file_name} />
-                      : this.functionAsChildren(student.artworks[0].image_file_name, size) }
+                      : this.functionAsChildren(student.artworks[0].image_file_name) }
                   </div>
                   <div className="students__info">
                     <div className="students__name">{student.name.toUpperCase()}</div>
