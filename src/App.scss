@@ -98,13 +98,11 @@
 
 .header__links {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-weight: 300;
   .header__links-wrapper {
-    position: absolute;
-    flex-direction: column;
-    right: 30px;
     display: flex;
+    flex-direction: column;
     @include bp-tablet {
       flex-direction: row;
     }
@@ -313,10 +311,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 55px;
-  @include bp-tablet {
-    margin-top: 0; 
-  }
 }
 .spinner {
   display: none;

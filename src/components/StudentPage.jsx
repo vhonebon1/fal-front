@@ -72,10 +72,10 @@ class StudentPage extends React.Component {
         { showInfo &&
           <div className="students__contact"> 
             { student.instagram &&
-              <span>Instagram: <a target="_blank" rel="noopener noreferrer" href={student.instagram}>{student.instagram}</a></span>
+              <span>Instagram: <a target="_blank" href={student.instagram}>{student.instagram}</a></span>
             }
             { student.email &&
-              <span>Website: {student.email}</span>
+              <span>Website: <a target="_blank" href={student.instagram}>{student.email}</a></span>
             }
           </div>
         }

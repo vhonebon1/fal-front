@@ -25,10 +25,10 @@ const Slideshow = ({ item, student }) =>
         { (student.email || student.instagram) &&
           <div className="students__contact">
             { student.instagram &&
-              <span>Instagram:<a target="_blank" rel="noopener noreferrer" href={`https://www.instagram.com/${student.instagram}`}>{`@${student.instagram}`}</a></span>
+              <span>Instagram: <a target="_blank"  href={`https://www.instagram.com/${student.instagram}`}>{`@${student.instagram}`}</a></span>
             }
             { student.email &&
-              <span>Website:<a target="_blank" rel="noopener noreferrer" href={student.email}>{student.email}</a></span>
+              <span>Website: <a target="_blank" href={student.email}>{student.email}</a></span>
             }
           </div>
         }
