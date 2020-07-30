@@ -31,7 +31,7 @@ class StudentGrid extends React.Component {
   calculateSize = () => {
     const isMobile = window.innerWidth < 500
     const isLarge = window.innerWidth > 1500
-    return isMobile ? (window.innerWidth - 30) : isLarge ? 250 : 200
+    return isMobile ? (window.innerWidth) : isLarge ? 250 : 200
   }
 
   functionAsChildren = (image) => (
@@ -62,7 +62,7 @@ class StudentGrid extends React.Component {
               >
                 <div className="students__image-wrapper">
                   <div className="students__image-innerWrapper">
-                    { window.screen < 500 ? 
+                    { window.innerWidth < 500 ?
                       <img alt="" src={student.artworks[0].image_file_name} />
                       : this.functionAsChildren(student.artworks[0].image_file_name) }
                   </div>
