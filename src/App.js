@@ -23,6 +23,16 @@ class App extends React.Component {
     this.getData()
   }
 
+  applyFont () {
+    const docHead = document.getElementsByTagName("head")[0]
+    var link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.type = 'text/css'
+    link.href = `https://fonts.googleapis.com/css?family=${this.state.cohort.font}`
+    docHead.appendChild(link)
+    document.getElementsByTagName("body")[0].style = `font-family: ${this.state.cohort.font}`  
+  }
+
   getData = () => {
     axios.get(process.env.REACT_APP_BACK).then((response) => {
       const { students, cohort, past_cohorts } = response.data
@@ -71,23 +81,24 @@ class App extends React.Component {
       <div className="App">
         { this.state.hasData &&
           <>
-          { this.renderHeader() }
-          <Switch>
-            <Route exact path="/" render={props => 
-              (<StudentGrid {...props} 
-                students={students} 
-                cohortName={cohort.name}
-              />)
-            } />
-            <Route 
-              exact path={`/${cohort.name}/:studentName`} 
-              render={props => (<StudentPage {...props} students={students} />)} 
-            />
-            <Route 
-              exact path="/about" 
-              render={props => (<AboutPage {...props} cohort={cohort} />)} 
-            />
-          </Switch>
+            { this.applyFont() }
+            { this.renderHeader() }
+            <Switch>
+              <Route exact path="/" render={props => 
+                (<StudentGrid {...props} 
+                  students={students} 
+                  cohortName={cohort.name}
+                />)
+              } />
+              <Route 
+                exact path={`/${cohort.name}/:studentName`} 
+                render={props => (<StudentPage {...props} students={students} />)} 
+              />
+              <Route 
+                exact path="/about" 
+                render={props => (<AboutPage {...props} cohort={cohort} />)} 
+              />
+            </Switch>
           </>
         }
       </div>

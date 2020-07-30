@@ -3,7 +3,6 @@
 .App {
   height: calc(100vh - 60px);
   margin: 30px 15px;
-  font-family: 'Merriweather', serif;
   @include bp-tablet {
     margin: 30px;
   }
