@@ -52,25 +52,27 @@ class App extends React.Component {
     const { pastCohorts, showDropdown, cohort } = this.state
     const showPastCohorts = pastCohorts.length > 0 && showDropdown
     return (
-      <div className="header__links">
+      <div className="header">
         <div className="header__title">
           <Link to='/'>FALMOUTH FASHION PHOTOGRAPHY {cohort.name}</Link>
         </div>
-        <div className="header__links-wrapper">
-          <Link className="header-link" to='/'>Home</Link>
-          <Link className="header-link" to='/about'>About</Link>
-          { pastCohorts.length > 0 &&
-            <div className="header-link" onMouseEnter={() => this.toggleShowDropdown()} onMouseLeave={() => this.toggleHideDropdown()}>
-              Past cohorts
-              { showPastCohorts && 
-                <div className="cohort-links">
-                  { this.state.pastCohorts.map(cohort => 
-                    <Link to='/about' class="cohort-link">{cohort}</Link>
-                  )}
-                </div>
-              }
-            </div>
-          }
+        <div className="header__links">
+          <div className="header__links-inner">
+            <Link className="header-link" to='/'>Home</Link>
+            <Link className="header-link" to='/about'>About</Link>
+            { pastCohorts.length > 0 &&
+              <div className="header-link" onMouseEnter={() => this.toggleShowDropdown()} onMouseLeave={() => this.toggleHideDropdown()}>
+                Past cohorts
+                { showPastCohorts && 
+                  <div className="cohort-links">
+                    { this.state.pastCohorts.map(cohort => 
+                      <Link to='/about' class="cohort-link">{cohort}</Link>
+                    )}
+                  </div>
+                }
+              </div>
+            }
+          </div>
         </div>
       </div>)
   }
