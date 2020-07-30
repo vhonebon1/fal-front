@@ -3,6 +3,7 @@
 .App {
   height: calc(100vh - 60px);
   margin: 30px 15px;
+  font-family: 'Merriweather', serif;
   @include bp-tablet {
     margin: 30px;
   }
@@ -233,7 +234,7 @@
   width: 100%;
   margin: 10px 0 15px 0;
   font-weight: 300;
-  line-height: 1.3em;
+  line-height: 1.4em;
   @include bp-tablet {
     width: 90%; 
   }
@@ -241,12 +242,11 @@
 
 .cohort__info-block {
   font-weight: 300;
-  margin-top: 20px; 
-  line-height: 1.2em;
+  margin-top: 40px; 
+  line-height: 1.4em;
   @include bp-tablet { 
     width: 65%;
     font-size: 1.25em;
-    line-height: 1.4em;
     margin-top: 80px; 
   }
   .italic {
@@ -314,7 +314,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 55px;
   @include bp-tablet {
     margin-top: 0; 
   }
