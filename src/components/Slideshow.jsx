@@ -28,7 +28,7 @@ const Slideshow = ({ item, student }) =>
               <span>Instagram: <a target="_blank"  href={`https://www.instagram.com/${student.instagram}`}>{`@${student.instagram}`}</a></span>
             }
             { student.email &&
-              <span>Website: <a target="_blank" href={student.email}>{student.email}</a></span>
+              <span>Website: <a target="_blank" href={`https://${student.email}`}>{student.email}</a></span>
             }
           </div>
         }
