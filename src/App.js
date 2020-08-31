@@ -28,15 +28,15 @@ class App extends React.Component {
     var link = document.createElement('link')
     link.rel = 'stylesheet'
     link.type = 'text/css'
-    link.href = `https://fonts.googleapis.com/css?family=${this.state.cohort.font}`
+    link.href = `https://fonts.googleapis.com/css?family=${this.state.settings.font}`
     docHead.appendChild(link)
-    document.getElementsByTagName("body")[0].style = `font-family: ${this.state.cohort.font}`  
+    document.getElementsByTagName("body")[0].style = `font-family: ${this.state.settings.font}`  
   }
 
   getData = () => {
     axios.get(process.env.REACT_APP_BACK).then((response) => {
-      const { students, cohort, past_cohorts } = response.data
-      this.setState({students, cohort, pastCohorts: past_cohorts, hasData: true})
+      const { students, cohort, past_cohorts, settings } = response.data
+      this.setState({ students, cohort, pastCohorts: past_cohorts, settings, hasData: true})
     })
   }
 
@@ -49,12 +49,12 @@ class App extends React.Component {
   }
 
   renderHeader() {
-    const { pastCohorts, showDropdown, cohort } = this.state
+    const { pastCohorts, showDropdown, cohort, settings } = this.state
     const showPastCohorts = pastCohorts.length > 0 && showDropdown
     return (
       <div className="header">
         <div className="header__title">
-          <Link to='/'>FALMOUTH FASHION PHOTOGRAPHY {cohort.name}</Link>
+          <Link to='/'>{settings.title}</Link>
         </div>
         <div className="header__links">
           <div className="header__links-inner">
@@ -78,7 +78,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { students, cohort } = this.state
+    const { students, cohort, settings } = this.state
     return (
       <div className="App">
         { this.state.hasData &&
@@ -90,6 +90,7 @@ class App extends React.Component {
                 (<StudentGrid {...props} 
                   students={students} 
                   cohortName={cohort.name}
+                  columns={settings.columns}
                 />)
               } />
               <Route 

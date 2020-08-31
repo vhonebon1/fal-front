@@ -9,7 +9,8 @@ class StudentGrid extends React.Component {
     super(props);
     const startSize = this.calculateSize()
     this.state = {
-      size: startSize
+      size: startSize,
+      width: window.innerWidth
     }
   }
 
@@ -17,7 +18,7 @@ class StudentGrid extends React.Component {
     this.setState({ size: this.calculateSize() })
     const self = this;
     window.addEventListener('resize', function(event){
-      self.setState({ size: self.calculateSize() })
+      self.setState({ size: self.calculateSize(), width: window.innerWidth })
     })
   }
 
@@ -32,6 +33,13 @@ class StudentGrid extends React.Component {
     const isMobile = window.innerWidth < 500
     const isLarge = window.innerWidth > 1500
     return isMobile ? (window.innerWidth) : isLarge ? 250 : 200
+  }
+
+  styles = () => {
+    if (this.state.width <= 500) return {flex: `0 0 100%`}
+    if (this.state.width <= 768) return {flex: `0 0 ${(100 / (this.props.columns - 3)) - 1}%`}
+    if (this.state.width <= 992) return {flex: `0 0 ${(100 / (this.props.columns - 2)) - 1}%`}
+    if (this.state.width <= 1500) return {flex: `0 0 ${(100 / this.props.columns) - 1 }%`}
   }
 
   functionAsChildren = (image) => (
@@ -51,6 +59,8 @@ class StudentGrid extends React.Component {
 
   render() {
     const { students, cohortName } = this.props
+    const styles = this.styles()
+    console.log(styles)
     return (
       <div className="students__grid">
         { students.map((student, index) =>
@@ -58,7 +68,8 @@ class StudentGrid extends React.Component {
             { student.artworks.length > 0 &&
               <Link 
                 to={`/${cohortName}/${student.name.replace(/\s+/g, '-').toLowerCase()}`} 
-                id={index} 
+                id={index}
+                style={styles}
               >
                 <div className="students__image-wrapper">
                   <div className="students__image-innerWrapper">
