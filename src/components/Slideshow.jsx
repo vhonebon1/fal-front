@@ -10,7 +10,7 @@ const Slideshow = ({ item, student }) =>
           </div>
           : 
           <div className="image__inner">
-            <img src={item.image_file_name} alt="" /> 
+            <img src={item.image_file_name.large} alt="" /> 
           </div>
         }
       </div>            

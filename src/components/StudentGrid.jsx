@@ -63,8 +63,8 @@ class StudentGrid extends React.Component {
                 <div className="students__image-wrapper">
                   <div className="students__image-innerWrapper">
                     { window.innerWidth < 500 ?
-                      <img alt="" src={student.artworks[0].image_file_name} />
-                      : this.functionAsChildren(student.artworks[0].image_file_name) }
+                      <img alt="" src={student.artworks[0].image_file_name.small} />
+                      : this.functionAsChildren(student.artworks[0].image_file_name.small) }
                   </div>
                   <div className="students__info">
                     <div className="students__name">{student.name.toUpperCase()}</div>
