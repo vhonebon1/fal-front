@@ -39,7 +39,7 @@ class StudentGrid extends React.Component {
     if (this.state.width <= 500) return {flex: `0 0 100%`}
     if (this.state.width <= 768) return {flex: `0 0 ${(100 / (this.props.columns - 3)) - 1}%`}
     if (this.state.width <= 992) return {flex: `0 0 ${(100 / (this.props.columns - 2)) - 1}%`}
-    if (this.state.width <= 1500) return {flex: `0 0 ${(100 / this.props.columns) - 1 }%`}
+    if (this.state.width > 993) return {flex: `0 0 ${(100 / this.props.columns) - 1 }%`}
   }
 
   functionAsChildren = (image) => (
@@ -60,7 +60,6 @@ class StudentGrid extends React.Component {
   render() {
     const { students, cohortName } = this.props
     const styles = this.styles()
-    console.log(styles)
     return (
       <div className="students__grid">
         { students.map((student, index) =>
